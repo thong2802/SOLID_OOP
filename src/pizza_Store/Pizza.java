@@ -1,32 +1,13 @@
 package pizza_Store;
+import java.util.*;
 
-import java.util.List;
-
-public class Pizza {
+public abstract class Pizza {
     private String name;
     private String dough;
     private String sauce;
-    private List<String> toppings;
-
-    // Defaul Contructor.
-    public Pizza(String s) {
-    }
-    // Contructor have Parameter
-    public Pizza(String name, String dough, String sauce, List<String> toppings) {
-        this.name = name;
-        this.dough = dough;
-        this.sauce = sauce;
-        this.toppings = toppings;
-    }
-    // Coppy Contructor
-    public Pizza(Pizza obj) {
-        name = obj.name;
-        dough = obj.dough;
-        sauce = obj.sauce;
-        toppings = obj.toppings;
-    }
+    protected List<String> toppings = new ArrayList<String>();
+    protected String type;
     // set/ get
-
     public String getName() {
         return name;
     }
@@ -51,23 +32,23 @@ public class Pizza {
         this.sauce = sauce;
     }
 
-    public List<String> getToppings() {
-        return toppings;
-    }
-
-    public void setToppings(List<String> toppings) {
-        this.toppings = toppings;
-    }
 
     // methods
 
     public void Prepare() {
+        System.out.println("---------------------");
         System.out.println("Preparing " + name);
         System.out.println("Tossing dough... ");
-        System.out.println("Adding sauce..." );
+        System.out.println("Adding sauce...");
         System.out.println("Adding toppings: ");
-        for (String topping: toppings) {
+       /* for (String topping: toppings) {
             System.out.println("\t" + topping);
+        }
+        */
+        if (toppings != null) {
+            toppings.forEach(toppings -> {
+                System.out.println("\t" + toppings);
+            });
         }
     }
 
@@ -81,5 +62,6 @@ public class Pizza {
 
     public void Box(){
         System.out.println("Boxing " + name);
+        System.out.println("---------------------");
     }
 }
